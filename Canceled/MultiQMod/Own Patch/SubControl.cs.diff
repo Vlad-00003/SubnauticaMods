@@ -1,0 +1,20 @@
+private void Update() 116c116
+<         if (!GameModeUtils.RequiresPower() || this.powerRelay.ConsumeEnergy(this.throttle.magnitude * this.cyclopsMotorMode.GetPowerConsumption() * Time.deltaTime / this.sub.GetPowerRating(), out amountConsumed))
+---
+>         if (!GameModeUtils.RequiresPower() || this.powerRelay.ConsumeEnergy((float) ((double) this.throttle.magnitude * (double) this.cyclopsMotorMode.GetPowerConsumption() * (double) Time.deltaTime / (double) this.sub.GetPowerRating() / 2.0), out amountConsumed))
+private void FixedUpdate() 160c160
+<       float baseTurningTorque = this.BaseTurningTorque;
+---
+>       float num = this.BaseTurningTorque * 1.5f;
+private void FixedUpdate() 162c162
+<         this.GetComponent<Rigidbody>().AddTorque(this.sub.subAxis.up * baseTurningTorque * this.turnScale * this.throttle.x, ForceMode.Acceleration);
+---
+>         this.GetComponent<Rigidbody>().AddTorque(this.sub.subAxis.up * num * this.turnScale * this.throttle.x, ForceMode.Acceleration);
+private void FixedUpdate() 189c189
+<       float baseForwardAccel = this.BaseForwardAccel;
+---
+>       float num = this.BaseForwardAccel * 1.5f;
+private void FixedUpdate() 191c191
+<         this.GetComponent<Rigidbody>().AddForce(this.sub.subAxis.forward * baseForwardAccel * this.accelScale * this.throttle.z, ForceMode.Acceleration);
+---
+>         this.GetComponent<Rigidbody>().AddForce(this.sub.subAxis.forward * num * this.accelScale * this.throttle.z, ForceMode.Acceleration);

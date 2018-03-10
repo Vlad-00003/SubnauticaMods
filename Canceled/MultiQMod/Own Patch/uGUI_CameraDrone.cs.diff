@@ -1,0 +1,39 @@
+private void LateUpdate()
+115c115,116
+<     float b1 = !((UnityEngine.Object) this.activeCamera != (UnityEngine.Object) null) ? 0.0f : Mathf.Max(0.0f, this.activeCamera.GetScreenDistance((MapRoomScreen) null) - 250f) / 250f;
+---
+>     float num1 = !((UnityEngine.Object) this.activeCamera != (UnityEngine.Object) null) ? 0.0f : Mathf.Max(0.0f, this.activeCamera.GetScreenDistance((MapRoomScreen) null) - 250f) / 250f;
+>     float b1 = 0.0f;
+117c118,119
+<     float b2 = !((UnityEngine.Object) this.activeCamera != (UnityEngine.Object) null) ? 0.0f : Mathf.Clamp((float) (((double) this.activeCamera.GetScreenDistance((MapRoomScreen) null) - 520.0) / 100.0), 0.0f, 0.99f);
+---
+>     float num2 = !((UnityEngine.Object) this.activeCamera != (UnityEngine.Object) null) ? 0.0f : Mathf.Clamp((float) (((double) this.activeCamera.GetScreenDistance((MapRoomScreen) null) - 520.0) / 100.0), 0.0f, 0.99f);
+>     float b2 = 0.0f;
+137c139
+<         int num1 = -1;
+---
+>         int num3 = -1;
+140,141c142,143
+<           num1 = Mathf.RoundToInt((float) (100.0 * ((double) liveMixin.health / (double) liveMixin.maxHealth)));
+<         if (this.health != num1)
+---
+>           num3 = Mathf.RoundToInt((float) (100.0 * ((double) liveMixin.health / (double) liveMixin.maxHealth)));
+>         if (this.health != num3)
+143c145
+<           this.health = num1;
+---
+>           this.health = num3;
+146c148
+<         int num2 = -1;
+---
+>         int num4 = -1;
+149,150c151,152
+<           num2 = Mathf.RoundToInt((float) (100.0 * ((double) energyMixin.charge / (double) energyMixin.capacity)));
+<         if (this.power != num2)
+---
+>           num4 = Mathf.RoundToInt((float) (100.0 * ((double) energyMixin.charge / (double) energyMixin.capacity)));
+>         if (this.power != num4)
+152c154
+<           this.power = num2;
+---
+>           this.power = num4;

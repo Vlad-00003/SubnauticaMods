@@ -1,0 +1,4 @@
+public void Awake() 99c99
+<       this.quickSlots = new QuickSlots(this.gameObject, this.toolSocket, this.cameraSocket, this, component1.rightHandSlot, 5);
+---
+>       this.quickSlots = new QuickSlots(this.gameObject, this.toolSocket, this.cameraSocket, this, component1.rightHandSlot, 8);

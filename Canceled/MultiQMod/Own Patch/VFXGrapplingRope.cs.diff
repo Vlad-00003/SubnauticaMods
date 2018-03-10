@@ -1,0 +1,4 @@
+13c13
+<   private float maxDistance = 35f;
+---
+>   private float maxDistance = 70f;

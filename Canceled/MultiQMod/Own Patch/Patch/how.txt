@@ -1,0 +1,4 @@
+GameInput - Добавляем в конец enum GameInput.Buttons пункты Slot6,Slot7,Slot8.
+Дополняем SetupDefaultKeyboardBindings() 
+
+Затем остальное

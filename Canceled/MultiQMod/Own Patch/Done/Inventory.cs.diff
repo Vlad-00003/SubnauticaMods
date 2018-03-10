@@ -1,0 +1,4 @@
+public void Awake() 94c94
+<       this._container = new ItemsContainer(6, 8, component3, "InventoryStorageLabel", (FMODAsset) null);
+---
+>       this._container = new ItemsContainer(8, 10, component3, "InventoryStorageLabel", (FMODAsset) null);

@@ -1,0 +1,5 @@
+
+private void ApplyPhysicsMove() 588c588
+<       Vector3 acceleration = this.transform.rotation * (((float) ((double) Mathf.Abs(vector3.x) * (double) this.sidewardForce + (double) Mathf.Max(0.0f, vector3.z) * (double) this.forwardForce + (double) Mathf.Max(0.0f, -vector3.z) * (double) this.backwardForce) + Mathf.Abs(vector3.y * this.verticalForce)) * vector3) * Time.deltaTime;
+---
+>       Vector3 acceleration = this.transform.rotation * (((float) ((double) Mathf.Abs(vector3.x) * (double) this.sidewardForce + (double) Mathf.Max(0.0f, vector3.z) * ((double) this.forwardForce * 1.5) + (double) Mathf.Max(0.0f, -vector3.z) * (double) this.backwardForce) + Mathf.Abs(vector3.y * this.verticalForce)) * vector3) * Time.deltaTime;

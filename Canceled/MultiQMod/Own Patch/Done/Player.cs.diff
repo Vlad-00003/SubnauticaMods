@@ -1,0 +1,8 @@
+public void Awake() 836a897
+<	TimeCapsuleContentProvider.Initialize();
+<	PDAData.Initialize(this.pdaData);
+---
+>	TimeCapsuleContentProvider.Initialize();
+>	PDAData.Initialize(this.pdaData);
+>	((SteamEconomy) this).UnlockItems();
+call SteamEconomy.UnlockItems();

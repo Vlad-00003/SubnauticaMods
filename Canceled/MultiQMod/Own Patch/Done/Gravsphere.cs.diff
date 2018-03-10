@@ -1,0 +1,12 @@
+36c36
+<   private const int maxAttached = 12;
+---
+>   private const int maxAttached = 24;
+38c38
+<   private const float maxForce = 15f;
+---
+>   private const float maxForce = 30f;
+private void OnTriggerEnter(Collider collider) 102c102
+<     if (!this.IsValidTarget(collider.gameObject) || !((UnityEngine.Object) componentInHierarchy != (UnityEngine.Object) null) || (this.attractableList.Contains(componentInHierarchy) || this.attractableList.Count >= 12))
+---
+>     if (!this.IsValidTarget(collider.gameObject) || !((UnityEngine.Object) componentInHierarchy != (UnityEngine.Object) null) || (this.attractableList.Contains(componentInHierarchy) || this.attractableList.Count >= 24))

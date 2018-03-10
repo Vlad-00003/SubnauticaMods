@@ -1,0 +1,46 @@
+private void UnlockItems() 77,106c85,98
+<     if (this.HasItem(1))
+<       KnownTech.Add(TechType.SpecialHullPlate, false);
+<     if (this.HasItem(1388))
+<       KnownTech.Add(TechType.DevTestItem, false);
+<     if (this.HasItem(1389))
+<       KnownTech.Add(TechType.BikemanHullPlate, false);
+<     if (this.HasItem(1390))
+<       KnownTech.Add(TechType.EatMyDictionHullPlate, false);
+<     if (this.HasItem(1391))
+<       KnownTech.Add(TechType.DioramaHullPlate, false);
+<     if (this.HasItem(1392))
+<       KnownTech.Add(TechType.MarkiplierHullPlate, false);
+<     if (this.HasItem(1393))
+<       KnownTech.Add(TechType.MuyskermHullPlate, false);
+<     if (this.HasItem(1394))
+<       KnownTech.Add(TechType.LordMinionHullPlate, false);
+<     if (this.HasItem(1395))
+<       KnownTech.Add(TechType.JackSepticEyeHullPlate, false);
+<     if (this.HasItem(1397))
+<       KnownTech.Add(TechType.IGPHullPlate, false);
+<     if (this.HasItem(1493))
+<       KnownTech.Add(TechType.GilathissHullPlate, false);
+<     if (this.HasItem(1494))
+<       KnownTech.Add(TechType.Marki1, false);
+<     if (this.HasItem(1495))
+<       KnownTech.Add(TechType.Marki2, false);
+<     if (this.HasItem(1496))
+<       KnownTech.Add(TechType.JackSepticEye, false);
+<     if (!this.HasItem(1497))
+<       return;
+---
+>     KnownTech.Add(TechType.SpecialHullPlate, false);
+>     KnownTech.Add(TechType.DevTestItem, false);
+>     KnownTech.Add(TechType.BikemanHullPlate, false);
+>     KnownTech.Add(TechType.EatMyDictionHullPlate, false);
+>     KnownTech.Add(TechType.DioramaHullPlate, false);
+>     KnownTech.Add(TechType.MarkiplierHullPlate, false);
+>     KnownTech.Add(TechType.MuyskermHullPlate, false);
+>     KnownTech.Add(TechType.LordMinionHullPlate, false);
+>     KnownTech.Add(TechType.JackSepticEyeHullPlate, false);
+>     KnownTech.Add(TechType.IGPHullPlate, false);
+>     KnownTech.Add(TechType.GilathissHullPlate, false);
+>     KnownTech.Add(TechType.Marki1, false);
+>     KnownTech.Add(TechType.Marki2, false);
+>     KnownTech.Add(TechType.JackSepticEye, false);

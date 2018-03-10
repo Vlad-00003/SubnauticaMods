@@ -1,0 +1,5 @@
+<   private static float powerPerSecond = 0.2f;
+<   private static float updateInterval = 3f;
+---
+>   private static float powerPerSecond = 0.05f;
+>   private static float updateInterval = 20f;

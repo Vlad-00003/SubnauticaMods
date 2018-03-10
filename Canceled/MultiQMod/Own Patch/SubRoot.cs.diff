@@ -1,0 +1,12 @@
+29,31c63,65
+<   public float shieldPowerCost = 50f;
+<   public float sonarPowerCost = 10f;
+<   public float silentRunningPowerCost = 5f;
+---
+>   public float shieldPowerCost = 10f;
+>   public float sonarPowerCost = 1f;
+>   public float silentRunningPowerCost = 2f;
+private void UpdateThermalReactorCharge() 298c332
+<     float amount = this.thermalReactorCharge.Evaluate(this.GetTemperature()) * 1.5f * Time.deltaTime;
+---
+>     float amount = (float) ((double) (this.thermalReactorCharge.Evaluate(this.GetTemperature()) * 2f) * (double) Time.deltaTime * 2.0);

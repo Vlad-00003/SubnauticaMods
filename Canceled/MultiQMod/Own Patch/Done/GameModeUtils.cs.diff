@@ -1,0 +1,4 @@
+public static bool AllowsAchievements() 70c70
+<     return !GameModeUtils.IsOptionActive(GameModeOption.Cheats);
+---
+>     return true;

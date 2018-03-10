@@ -1,0 +1,78 @@
+DnSpy (То, что не внесено в патчи):
+FireExtinguisher:
+  FireExtinguisher.cs:
+    UseExtinguisher:
+       в конце функции просто присваиваем текущему топливу значение максимального...
+
+InventoryConsoleCommands.cs:
+  Awake(): 
+    Добавить 
+		DevConsole.RegisterConsoleCommand(this, "resizestorage", false, false);
+    Проследить дабы была функция 
+private void OnConsoleCommand_resizestorage(NotificationCenter.Notification n)
+{
+	Inventory main = Inventory.main;
+	int usedStorageCount = main.GetUsedStorageCount();
+	if (usedStorageCount == 0)
+	{
+		ErrorMessage.AddDebug("Inventory.usedStorage is empty. Nothing to resize");
+		return;
+	}
+	int num;
+	int num2;
+	if (n != null && n.data != null && n.data.Count == 2 && int.TryParse((string)n.data[0], out num) && int.TryParse((string)n.data[1], out num2) && num >= 1 && num2 >= 1)
+	{
+		for (int i = 0; i < usedStorageCount; i++)
+		{
+			ItemsContainer itemsContainer = main.GetUsedStorage(i) as ItemsContainer;
+			if (itemsContainer != null)
+			{
+				itemsContainer.Resize(num, num2);
+			}
+		}
+		return;
+	}
+	ErrorMessage.AddDebug("Usage: 'resizestorage width height'");
+}
+ILSpy + Reflixil:
+Увеличение инвентаря игрока и КРАБ-а
+Root namespace:
+ Inventory:
+   Awake:
+	ldc.i4.8 на ldc.i4 с параметром int32 = 10. Меняем ВТОРОЙ параметр.
+	this._container = new ItemsContainer(8, 10, component3, "InventoryStorageLabel", null);
+ Exosuit:
+   UpdateStorageSize:
+	Сносим
+    IL_0004: ldarg.0      // this
+    IL_0005: call         instance class Equipment Vehicle::get_modules()
+    IL_000a: ldc.i4       2103 // 0x00000837
+    IL_000f: callvirt     instance int32 Equipment::GetCount(valuetype TechType)
+    IL_0014: ldc.i4.1     
+    IL_0015: blt          IL_001e
+
+    // [995 7 - 995 16]
+    IL_001a: ldc.i4.7     
+    IL_001b: stloc.0      // width
+
+    // [996 7 - 996 17]
+    IL_001c: ldc.i4.7     
+    IL_001d: stloc.1      // height
+Начальные переменные заменяем на 
+    IL_0000: ldc.i4.6     -> ldc.i4.8
+    IL_0001: stloc.0      // width
+
+    // [992 5 - 992 19]
+    IL_0002: ldc.i4.4     -> ldc.i4 с параметром int32 = 10
+    IL_0003: stloc.1      // height
+
+Комната сканирование:
+  MapRoomFunctionality
+    GetScanInterval():
+	Удалить всё нахуй. Оставляем только ldc.r4 с параметром single = 1 и ret
+    GetScanRange():
+	Удалить всё нахуй. Оставляем только ldc.r4 с параметром single = 1000 и ret
+
+
+
+	

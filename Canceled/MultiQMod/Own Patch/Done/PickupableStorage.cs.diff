@@ -1,0 +1,26 @@
+public void OnHandHover(GUIHand hand) 20,29c20
+<     if (this.storageContainer.IsEmpty())
+<     {
+<       this.pickupable.OnHandHover(hand);
+<     }
+<     else
+<     {
+<       if (string.IsNullOrEmpty(this.cantPickupHoverText))
+<         return;
+<       HandReticle.main.SetInteractText(this.cantPickupHoverText, string.Empty, true, false, false);
+<     }
+---
+>     this.pickupable.OnHandHover(hand);
+public void OnHandClick(GUIHand hand) 34,43c25
+<     if (this.storageContainer.IsEmpty())
+<     {
+<       this.pickupable.OnHandClick(hand);
+<     }
+<     else
+<     {
+<       if (string.IsNullOrEmpty(this.cantPickupClickText))
+<         return;
+<       ErrorMessage.AddError(Language.main.Get(this.cantPickupClickText));
+<     }
+---
+>     this.pickupable.OnHandClick(hand);

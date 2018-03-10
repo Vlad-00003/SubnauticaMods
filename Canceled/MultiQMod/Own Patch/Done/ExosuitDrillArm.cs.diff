@@ -1,0 +1,4 @@
+public void OnHit() 134c134
+<           ancestor2.TakeDamage(4f, zero, DamageType.Drill, (GameObject) null);
+---
+>           ancestor2.TakeDamage(16f, zero, DamageType.Drill, (GameObject) null);

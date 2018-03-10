@@ -1,0 +1,14 @@
+13c13,23
+<   private static readonly string[] slotNames = new string[6]{ "QuickSlot0", "QuickSlot1", "QuickSlot2", "QuickSlot3", "QuickSlot4", "QuickSlot5" };
+---
+>   private static readonly string[] slotNames = new string[8]
+>   {
+>     "QuickSlot0",
+>     "QuickSlot1",
+>     "QuickSlot2",
+>     "QuickSlot3",
+>     "QuickSlot4",
+>     "QuickSlot5",
+>     "QuickSlot6",
+>     "QuickSlot7"
+>   };
