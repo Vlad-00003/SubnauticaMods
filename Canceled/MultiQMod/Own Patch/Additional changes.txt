@@ -1,14 +1,13 @@
-DnSpy (То, что не внесено в патчи):
+Not in the diffs:
 FireExtinguisher:
   FireExtinguisher.cs:
-    UseExtinguisher:
-       в конце функции просто присваиваем текущему топливу значение максимального...
+	add abilty to recharge the dam extinguishers
 
 InventoryConsoleCommands.cs:
   Awake(): 
-    Добавить 
+    add
 		DevConsole.RegisterConsoleCommand(this, "resizestorage", false, false);
-    Проследить дабы была функция 
+    check the funtion below to exist in the code
 private void OnConsoleCommand_resizestorage(NotificationCenter.Notification n)
 {
 	Inventory main = Inventory.main;
@@ -35,11 +34,11 @@ private void OnConsoleCommand_resizestorage(NotificationCenter.Notification n)
 	ErrorMessage.AddDebug("Usage: 'resizestorage width height'");
 }
 ILSpy + Reflixil:
-Увеличение инвентаря игрока и КРАБ-а
+Incresing inv and prawn storage sizes
 Root namespace:
  Inventory:
    Awake:
-	ldc.i4.8 на ldc.i4 с параметром int32 = 10. Меняем ВТОРОЙ параметр.
+	ldc.i4.8 на ldc.i4 | operand (int32) = 10. Changing the second one.
 	this._container = new ItemsContainer(8, 10, component3, "InventoryStorageLabel", null);
  Exosuit:
    UpdateStorageSize:
@@ -58,7 +57,7 @@ Root namespace:
     // [996 7 - 996 17]
     IL_001c: ldc.i4.7     
     IL_001d: stloc.1      // height
-Начальные переменные заменяем на 
+Changing first vars to:
     IL_0000: ldc.i4.6     -> ldc.i4.8
     IL_0001: stloc.0      // width
 
@@ -66,12 +65,10 @@ Root namespace:
     IL_0002: ldc.i4.4     -> ldc.i4 с параметром int32 = 10
     IL_0003: stloc.1      // height
 
-Комната сканирование:
+Scanning room:
   MapRoomFunctionality
-    GetScanInterval():
-	Удалить всё нахуй. Оставляем только ldc.r4 с параметром single = 1 и ret
-    GetScanRange():
-	Удалить всё нахуй. Оставляем только ldc.r4 с параметром single = 1000 и ret
+    GetScanInterval(): 1f - lowest possible. Lowering it down highly decrese preformance 
+    GetScanRange(): 1000f is the limit. higher values does almost nothing, as the area isn't loaded by the game.
 
 
 
