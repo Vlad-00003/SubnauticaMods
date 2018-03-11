@@ -77,8 +77,9 @@ namespace Utilites
         }
 
         #region Exceptions
-        public static void Log(this Exception e) =>
-            Debug(FormatException(e));
+        public static void Log(this Exception e, LogType logtype = LogType.Harmony) =>
+            Debug(FormatException(e), logtype);
+
         private static string FormatException(Exception e)
         {
             if (e == null)
@@ -89,44 +90,42 @@ namespace Utilites
         #endregion
 
         #region Harmony
-
-        public static void Log(this IEnumerable<CodeInstruction> instructions)
+        public static void Log(this IEnumerable<CodeInstruction> instructions, LogType logType = LogType.Harmony)
         {
-            Debug($"Logging instuctions");
+            Debug($"Logging instuctions", logType);
             var codes = new List<CodeInstruction>(instructions);
             for (int i = 0; i < codes.Count; i++)
             {
-                Debug($"[{i}] {codes[i]}");
+                Debug($"[{i}] {codes[i]}", logType);
             }
-            Debug($"End of instuctions log");
+            Debug($"End of instuctions log", logType);
         }
 
-        public static void LogPatches(this MethodBase method, HarmonyInstance harmony)
+        public static void LogPatches(this MethodBase method, HarmonyInstance harmony, LogType logType = LogType.Harmony)
         {
             var patches = harmony.IsPatched(method);
             if (patches == null)
             {
-                Debug($"Method \"{method}\" is not patched!");
+                Debug($"Method \"{method}\" is not patched!", logType);
                 return;
             }
-            Debug("Logging Prefixes...");
+            Debug("Logging Prefixes...", logType);
             foreach (var patch in patches.Prefixes)
             {
-                Debug($"Patch {patch.index}:\n\tOwner: {patch.owner}\n\tPatched method: {patch.patch}\n\tPriority: {patch.priority}\n\tBefore: {patch.before}\n\tAfter:{patch.after}");
+                Debug($"Patch {patch.index}:\n\tOwner: {patch.owner}\n\tPatched method: {patch.patch}\n\tPriority: {patch.priority}\n\tBefore: {patch.before}\n\tAfter:{patch.after}", logType);
             }
-            Debug("Logging Postfixes...");
+            Debug("Logging Postfixes...", logType);
             foreach (var patch in patches.Postfixes)
             {
-                Debug($"Patch {patch.index}:\n\tOwner: {patch.owner}\n\tPatched method: {patch.patch}\n\tPriority: {patch.priority}\n\tBefore: {patch.before}\n\tAfter:{patch.after}");
+                Debug($"Patch {patch.index}:\n\tOwner: {patch.owner}\n\tPatched method: {patch.patch}\n\tPriority: {patch.priority}\n\tBefore: {patch.before}\n\tAfter:{patch.after}", logType);
             }
-            Debug("Loggind Transpilers...");
+            Debug("Loggind Transpilers...", logType);
             foreach (var patch in patches.Transpilers)
             {
-                Debug($"Patch {patch.index}:\n\tOwner: {patch.owner}\n\tPatched method: {patch.patch}\n\tPriority: {patch.priority}\n\tBefore: {patch.before}\n\tAfter:{patch.after}");
+                Debug($"Patch {patch.index}:\n\tOwner: {patch.owner}\n\tPatched method: {patch.patch}\n\tPriority: {patch.priority}\n\tBefore: {patch.before}\n\tAfter:{patch.after}", logType);
             }
-            Debug("Done!");
+            Debug("Done!", logType);
         }
-
         #endregion
     }
 }
