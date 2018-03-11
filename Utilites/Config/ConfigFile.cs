@@ -18,7 +18,7 @@ namespace Utilites.Config
         public string Filepath;
         private Dictionary<string, object> _elements;
         public JsonSerializerSettings Settings { get; set; }
-        private string modname = null;
+        private readonly string _modname = null;
         private static readonly string _configPath = Environment.CurrentDirectory + @"\QMods\{0}\{1}.json";
 
         #region IEnumerable
@@ -28,7 +28,7 @@ namespace Utilites.Config
 
         public ConfigFile(string modname,string filepath)
         {
-            this.modname = modname;
+            this._modname = modname;
             Filepath = string.Format(_configPath,modname,filepath);
             _elements = new Dictionary<string, object>();
             Settings = new JsonSerializerSettings();
@@ -41,8 +41,8 @@ namespace Utilites.Config
         /// <param name="filename"></param>
         public void Load(string filename = null)
         {
-            filename = filename == null ? Filepath : string.Format(_configPath, modname, filename);
-            string source = File.ReadAllText(Filepath);
+            filename = GetFilePath(filename);
+            string source = File.ReadAllText(filename);
             _elements = JsonConvert.DeserializeObject<Dictionary<string, object>>(source, Settings);
         }
 
@@ -52,10 +52,10 @@ namespace Utilites.Config
         /// <param name="filename"></param>
         public void Save(string filename = null)
         {
-            filename = filename == null ? Filepath : string.Format(_configPath, modname, filename);
-            var dir = GetDirectory(Filepath);
+            filename = GetFilePath(filename);
+            var dir = GetDirectory(filename);
             if (dir != null && !Directory.Exists(dir)) Directory.CreateDirectory(dir);
-            File.WriteAllText(Filepath, JsonConvert.SerializeObject(_elements,Formatting.Indented,Settings));
+            File.WriteAllText(filename, JsonConvert.SerializeObject(_elements,Formatting.Indented,Settings));
         }
         /// <summary>
         /// Removes all entries from the config.
@@ -153,7 +153,42 @@ namespace Utilites.Config
         public T ConverValues<T>(object value) => (T) ConvertValue(value, typeof(T));
         public T Get<T>(params string[] path) => ConverValues<T>(Get(path));
 
+        public T ReadObject<T>(string filename = null)
+        {
+            filename = GetFilePath(filename);
+            T customObject;
+            if (File.Exists(filename))
+            {
+                var source = File.ReadAllText(filename);
+                customObject = JsonConvert.DeserializeObject<T>(source, Settings);
+            }
+            else
+            {
+                customObject = Activator.CreateInstance<T>();
+                WriteObject(customObject);
+            }
+            return customObject;
+        }
+        /// <summary>
+        /// Saves the config to the specified file, or the initilized one. Sync determines if the config would get the data as well.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="config"></param>
+        /// <param name="sync"></param>
+        /// <param name="filename"></param>
+        public void WriteObject<T>(T config, bool sync = false, string filename = null)
+        {
+            filename = GetFilePath(filename);
+            var dir = GetDirectory(filename);
+            if (dir != null && !Directory.Exists(dir)) Directory.CreateDirectory(dir);
+            var json = JsonConvert.SerializeObject(config, Formatting.Indented, Settings);
+            File.WriteAllText(filename, json);
+            if (sync) _elements = JsonConvert.DeserializeObject<Dictionary<string, object>>(json, Settings);
+        }
         #region Helpers
+
+        private string GetFilePath(string filename = null) =>
+            filename == null ? Filepath : string.Format(_configPath, _modname, filename);
 
         private static string GetDirectory(string path)
         {
