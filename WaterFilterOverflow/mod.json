@@ -6,6 +6,6 @@
   "Requires": [],
   "Enable": true,
   "AssemblyName": "WaterFilterOverflow.dll",
-  "EntryMethod": "AutosortLockers.QPatch.Patch",
+  "EntryMethod": "WaterFilterOverflow.QPatch.Patch",
   "Config": {}
 }
