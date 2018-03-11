@@ -5,7 +5,6 @@ using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Linq;
 using Oculus.Newtonsoft.Json;
-using Oculus.Newtonsoft.Json.Linq;
 
 namespace Utilites.Config
 {
@@ -19,17 +18,22 @@ namespace Utilites.Config
         private Dictionary<string, object> _elements;
         public JsonSerializerSettings Settings { get; set; }
         private readonly string _modname = null;
-        private static readonly string _configPath = Environment.CurrentDirectory + @"\QMods\{0}\{1}.json";
+        private readonly string _configPath = Environment.CurrentDirectory + @"\QMods\{0}\{1}.json";
 
         #region IEnumerable
         public IEnumerator<KeyValuePair<string, object>> GetEnumerator() => _elements.GetEnumerator();
         IEnumerator IEnumerable.GetEnumerator() => _elements.GetEnumerator();
         #endregion
 
-        public ConfigFile(string modname,string filepath)
+        /// <summary>
+        /// Generic config file. Extension would be automaticly added to the filename.
+        /// </summary>
+        /// <param name="modname"></param>
+        /// <param name="filename"></param>
+        public ConfigFile(string modname,string filename)
         {
             this._modname = modname;
-            Filepath = string.Format(_configPath,modname,filepath);
+            Filepath = string.Format(_configPath,modname,filename);
             _elements = new Dictionary<string, object>();
             Settings = new JsonSerializerSettings();
             Settings.Converters.Add(new KeyValuesConverter());
@@ -150,6 +154,27 @@ namespace Utilites.Config
             throw new InvalidCastException("Generic types other than List<> and Dictionary<,> are not supported");
         }
 
+        /// <summary>
+        /// Tries to get the value out of config. If it's persist - sets the value to the config one.
+        /// If it's not - Adds the provided value to the config.
+        /// If the config was changed returns true, overwise - false.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="variable"></param>
+        /// <param name="path"></param>
+        /// <returns></returns>
+        public bool TryGet<T>(ref T variable, params string[] path)
+        {
+            var tmp = Get<T>(path);
+            Logger.Debug($"tmp is {tmp}");
+            if (tmp != null)
+            {
+                variable = tmp;
+                return false;
+            }
+            this[path] = variable;
+            return true;
+        }
         public T ConverValues<T>(object value) => (T) ConvertValue(value, typeof(T));
         public T Get<T>(params string[] path) => ConverValues<T>(Get(path));
 
@@ -185,6 +210,7 @@ namespace Utilites.Config
             File.WriteAllText(filename, json);
             if (sync) _elements = JsonConvert.DeserializeObject<Dictionary<string, object>>(json, Settings);
         }
+
         #region Helpers
 
         private string GetFilePath(string filename = null) =>
@@ -245,7 +271,6 @@ namespace Utilites.Config
                     Dictionary<string, object> dict = existingValue as Dictionary<string, object> ?? new Dictionary<string, object>();
                     if (reader.TokenType == JsonToken.StartArray)
                     {
-                        JArray.Load(reader);
                         return dict;
                     }
                     // Read until end of object
