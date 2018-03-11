@@ -9,7 +9,11 @@
     <Import_RootNamespace>Utilites</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="$(MSBuildThisFileDirectory)Logger.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)ReflectionUtilites.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Config\ConfigFile.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Logger\Logger.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Logger\ReflectionUtilites.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="$(MSBuildThisFileDirectory)Logger\" />
   </ItemGroup>
 </Project>
