@@ -18,6 +18,7 @@ namespace Utilites.Config
         public string Filepath;
         private Dictionary<string, object> _elements;
         public JsonSerializerSettings Settings { get; set; }
+        private string modname = null;
         private static readonly string _configPath = Environment.CurrentDirectory + @"\QMods\{0}\{1}.json";
 
         #region IEnumerable
@@ -27,27 +28,38 @@ namespace Utilites.Config
 
         public ConfigFile(string modname,string filepath)
         {
+            this.modname = modname;
             Filepath = string.Format(_configPath,modname,filepath);
             _elements = new Dictionary<string, object>();
             Settings = new JsonSerializerSettings();
             Settings.Converters.Add(new KeyValuesConverter());
         }
 
-        public void Load(string filepath = null)
+        /// <summary>
+        /// Loads the config from the specified file, or the initilized one.
+        /// </summary>
+        /// <param name="filename"></param>
+        public void Load(string filename = null)
         {
-            filepath = filepath ?? Filepath;
-            string source = File.ReadAllText(filepath);
+            filename = filename == null ? Filepath : string.Format(_configPath, modname, filename);
+            string source = File.ReadAllText(Filepath);
             _elements = JsonConvert.DeserializeObject<Dictionary<string, object>>(source, Settings);
         }
 
-        public void Save(string filepath = null)
+        /// <summary>
+        /// Saves the config from the specified file, or the initilized one.
+        /// </summary>
+        /// <param name="filename"></param>
+        public void Save(string filename = null)
         {
-            filepath = filepath ?? Filepath;
-            var dir = GetDirectory(filepath);
+            filename = filename == null ? Filepath : string.Format(_configPath, modname, filename);
+            var dir = GetDirectory(Filepath);
             if (dir != null && !Directory.Exists(dir)) Directory.CreateDirectory(dir);
-            File.WriteAllText(filepath,JsonConvert.SerializeObject(_elements,Formatting.Indented,Settings));
+            File.WriteAllText(Filepath, JsonConvert.SerializeObject(_elements,Formatting.Indented,Settings));
         }
-
+        /// <summary>
+        /// Removes all entries from the config.
+        /// </summary>
         public void Clear() => _elements.Clear();
 
         /// <summary>
@@ -58,11 +70,7 @@ namespace Utilites.Config
         public object this[params string[] keys]
         {
             get => Get(keys);
-            set
-            {
-                var list = new List<object>(keys) {value};
-                Set(list.ToArray());
-            }
+            set => Set(new List<object>(keys) { value }.ToArray());
         }
 
         /// <summary>
