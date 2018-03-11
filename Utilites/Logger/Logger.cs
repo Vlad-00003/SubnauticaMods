@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
+using System.IO;
 using System.Reflection;
-using System.Text;
 using Harmony;
 
 namespace Utilites
@@ -31,6 +30,10 @@ namespace Utilites
     public enum LogType
     {
         /// <summary>
+        /// Print the information to the custom logfile located in the mod folder.
+        /// </summary>
+        Custom,
+        /// <summary>
         /// Print the information to the file "harmony.log.txt" located at the desktop.
         /// </summary>
         Harmony,
@@ -47,17 +50,21 @@ namespace Utilites
 
     public static class Logger
     {
-        public static void Debug(string text, LogType type = LogType.Harmony) =>
-            Log(text, LogLevel.Debug, type);
+        private static readonly string _logpath = Environment.CurrentDirectory + @"\QMods\{0}\log.txt";
 
-        public static void Error(string text, LogType type = LogType.Harmony) =>
-            Log(text, LogLevel.Error, type);
+        public static void Debug(object text, LogType type = LogType.Custom) =>
+            Log(text.ToString(), LogLevel.Debug, type);
 
-        public static void Info(string text, LogType type = LogType.Harmony) =>
-            Log(text, LogLevel.Info, type);
+        public static void Error(object text, LogType type = LogType.Custom) =>
+            Log(text.ToString(), LogLevel.Error, type);
 
-        public static void Warning(string text, LogType type = LogType.Harmony) =>
-            Log(text, LogLevel.Warning, type);
+        public static void Info(object text, LogType type = LogType.Custom) =>
+            Log(text.ToString(), LogLevel.Info, type);
+
+        public static void Warning(object text, LogType type = LogType.Custom) =>
+            Log(text.ToString(), LogLevel.Warning, type);
+
+        public static void Log(object text, LogType type = LogType.Custom) => Info(text, type);
 
         private static void Log(string text, LogLevel level, LogType type)
         {
@@ -65,19 +72,22 @@ namespace Utilites
             switch (type)
             {
                 case LogType.Harmony:
-                    Harmony.FileLog.Log($"{DateTime.Now.ToShortTimeString()} [{caller}] [{level}] {text}");
+                    Harmony.FileLog.Log($"{DateTime.Now.ToShortTimeString()} [{caller}] [{level:f}] {text}");
                     return;
                 case LogType.Console:
-                    Console.WriteLine($"[{caller}] [{level}] {text}]");
+                    Console.WriteLine($"[{caller}] [{level:f}] {text}]");
                     return;
                 case LogType.PlayerScreen:
-                    ErrorMessage.AddDebug($"{DateTime.Now.ToShortTimeString()} [{caller}] [{level}] {text}");
+                    ErrorMessage.AddDebug($"{DateTime.Now.ToShortTimeString()} [{caller}] [{level:f}] {text}");
+                    return;
+                case LogType.Custom:
+                    AddToFile(caller,$"{DateTime.Now.ToShortTimeString()} [{caller}] [{level:f}] {text}");
                     return;
             }
         }
 
         #region Exceptions
-        public static void Log(this Exception e, LogType logtype = LogType.Harmony) =>
+        public static void Log(this Exception e, LogType logtype = LogType.Custom) =>
             Debug(FormatException(e), logtype);
 
         private static string FormatException(Exception e)
@@ -90,7 +100,7 @@ namespace Utilites
         #endregion
 
         #region Harmony
-        public static void Log(this IEnumerable<CodeInstruction> instructions, LogType logType = LogType.Harmony)
+        public static void Log(this IEnumerable<CodeInstruction> instructions, LogType logType = LogType.Custom)
         {
             Debug($"Logging instuctions", logType);
             var codes = new List<CodeInstruction>(instructions);
@@ -101,7 +111,7 @@ namespace Utilites
             Debug($"End of instuctions log", logType);
         }
 
-        public static void LogPatches(this MethodBase method, HarmonyInstance harmony, LogType logType = LogType.Harmony)
+        public static void LogPatches(this MethodBase method, HarmonyInstance harmony, LogType logType = LogType.Custom)
         {
             var patches = harmony.IsPatched(method);
             if (patches == null)
@@ -126,6 +136,25 @@ namespace Utilites
             }
             Debug("Done!", logType);
         }
+        #endregion
+
+        #region Helpers
+
+        private static void AddToFile(string assemblyName, string text)
+        {
+            var path = string.Format(_logpath, assemblyName);
+            using (StreamWriter writer = File.AppendText(path))
+            {
+                writer.WriteLine(text);
+            }
+        }
+
+        public static void ClearCustomLog(string assemblyName)
+        {
+            var path = string.Format(_logpath, assemblyName);
+            File.Delete(path);
+        }
+
         #endregion
     }
 }
