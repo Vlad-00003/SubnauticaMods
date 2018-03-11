@@ -3,13 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Harmony;
 
 namespace WaterFilterOverflow
 {
-    public class QPatcher
+    public class QPatch
     {
-        private void test()
+        private static void Patch()
         {
+            HarmonyInstance harmony = HarmonyInstance.Create("com.waterfilteroverflow.mod");
         }
     }
 }

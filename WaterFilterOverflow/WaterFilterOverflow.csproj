@@ -39,6 +39,9 @@
     <Reference Include="Assembly-CSharp-firstpass">
       <HintPath>C:\SteamLibrary\steamapps\common\Subnautica\Subnautica_Data\Managed\Assembly-CSharp-firstpass.dll</HintPath>
     </Reference>
+    <Reference Include="AutosortLockers">
+      <HintPath>C:\SteamLibrary\steamapps\common\Subnautica\QMods\AutosortLockers\AutosortLockers.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>C:\SteamLibrary\steamapps\common\Subnautica\Subnautica_Data\Managed\Newtonsoft.Json.dll</HintPath>
@@ -59,14 +62,17 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="QPatcher.cs" />
+    <Compile Include="QPatch.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Utilites\Utilites.csproj">
-      <Project>{daaf1b91-74b3-4c42-b0a5-674139001528}</Project>
-      <Name>Utilites</Name>
-    </ProjectReference>
+    <Folder Include="CustomClasses\" />
+    <Folder Include="Patches\" />
   </ItemGroup>
+  <Import Project="..\Utilites\Utilites.projitems" Label="Shared" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>xcopy $(TargetPath) C:\SteamLibrary\steamapps\common\Subnautica\QMods\$(ProjectName)\ /q /y
+xcopy $(ProjectDir)mod.json C:\SteamLibrary\steamapps\common\Subnautica\QMods\$(ProjectName)\ /q /y</PostBuildEvent>
+  </PropertyGroup>
 </Project>

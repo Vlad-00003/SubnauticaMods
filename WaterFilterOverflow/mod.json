@@ -1,0 +1,11 @@
+{
+  "Id": "WaterFilterOverflow",
+  "DisplayName": "WaterFilterOverflow",
+  "Author": "Vlad-00003",
+  "Version": "1.0.0",
+  "Requires": [],
+  "Enable": true,
+  "AssemblyName": "WaterFilterOverflow.dll",
+  "EntryMethod": "AutosortLockers.QPatch.Patch",
+  "Config": {}
+}
