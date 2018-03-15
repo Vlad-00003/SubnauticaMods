@@ -1,0 +1,11 @@
+{
+  "Id": "DrillableScan",
+  "DisplayName": "DrillableScan",
+  "Author": "Vlad-00003",
+  "Version": "1.0.0",
+  "Requires": [],
+  "Enable": true,
+  "AssemblyName": "DrillableScan.dll",
+  "EntryMethod": "DrillableScan.QPatch.Patch",
+  "Config": {}
+}
