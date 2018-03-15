@@ -1,0 +1,11 @@
+{
+  "Id": "LargeDepositsFix",
+  "DisplayName": "LargeDepositsFix",
+  "Author": "Vlad-00003",
+  "Version": "1.0.0",
+  "Requires": [],
+  "Enable": true,
+  "AssemblyName": "LargeDepositsFix.dll",
+  "EntryMethod": "LargeDepositsFix.QPatch.Patch",
+  "Config": {}
+}

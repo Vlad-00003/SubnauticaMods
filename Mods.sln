@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WaterFilterOverflow", "Wate
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DrillableScan", "DrillableScan\DrillableScan.csproj", "{CF3D607F-BFD3-47CC-BFE2-43A68C6C0881}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LargeDepositsFix", "LargeDepositsFix\LargeDepositsFix.csproj", "{AFDDA6C6-EB9E-4AE0-BAB1-A7FFED51AD12}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{CF3D607F-BFD3-47CC-BFE2-43A68C6C0881}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CF3D607F-BFD3-47CC-BFE2-43A68C6C0881}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CF3D607F-BFD3-47CC-BFE2-43A68C6C0881}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AFDDA6C6-EB9E-4AE0-BAB1-A7FFED51AD12}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AFDDA6C6-EB9E-4AE0-BAB1-A7FFED51AD12}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AFDDA6C6-EB9E-4AE0-BAB1-A7FFED51AD12}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AFDDA6C6-EB9E-4AE0-BAB1-A7FFED51AD12}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
