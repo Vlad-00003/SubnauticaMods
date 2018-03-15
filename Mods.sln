@@ -5,6 +5,7 @@ VisualStudioVersion = 15.0.27428.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WaterFilterOverflow", "WaterFilterOverflow\WaterFilterOverflow.csproj", "{F4D3EEA0-9999-4B46-8B9C-9A643778DF21}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DrillableScan", "DrillableScan\DrillableScan.csproj", "{CF3D607F-BFD3-47CC-BFE2-43A68C6C0881}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -16,6 +17,10 @@ Global
 		{F4D3EEA0-9999-4B46-8B9C-9A643778DF21}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F4D3EEA0-9999-4B46-8B9C-9A643778DF21}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F4D3EEA0-9999-4B46-8B9C-9A643778DF21}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CF3D607F-BFD3-47CC-BFE2-43A68C6C0881}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF3D607F-BFD3-47CC-BFE2-43A68C6C0881}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CF3D607F-BFD3-47CC-BFE2-43A68C6C0881}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CF3D607F-BFD3-47CC-BFE2-43A68C6C0881}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
