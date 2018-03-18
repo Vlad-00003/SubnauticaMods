@@ -1,0 +1,11 @@
+{
+  "Id": "UnpackTitaniumIngots",
+  "DisplayName": "UnpackTitaniumIngots",
+  "Author": "Vlad-00003",
+  "Version": "1.0.0",
+  "Requires": [],
+  "Enable": true,
+  "AssemblyName": "UnpackTitaniumIngots.dll",
+  "EntryMethod": "UnpackTitaniumIngots.QPatch.Patch",
+  "Config": {}
+}

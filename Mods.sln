@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DrillableScan", "DrillableS
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LargeDepositsFix", "LargeDepositsFix\LargeDepositsFix.csproj", "{AFDDA6C6-EB9E-4AE0-BAB1-A7FFED51AD12}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnpackTitaniumIngots", "UnpackTitaniumIngots\UnpackTitaniumIngots.csproj", "{EA3623CD-AC63-4E30-BB4D-EBF42C83C18A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{AFDDA6C6-EB9E-4AE0-BAB1-A7FFED51AD12}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AFDDA6C6-EB9E-4AE0-BAB1-A7FFED51AD12}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AFDDA6C6-EB9E-4AE0-BAB1-A7FFED51AD12}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EA3623CD-AC63-4E30-BB4D-EBF42C83C18A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EA3623CD-AC63-4E30-BB4D-EBF42C83C18A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EA3623CD-AC63-4E30-BB4D-EBF42C83C18A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EA3623CD-AC63-4E30-BB4D-EBF42C83C18A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
