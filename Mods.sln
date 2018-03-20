@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LargeDepositsFix", "LargeDe
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnpackTitaniumIngots", "UnpackTitaniumIngots\UnpackTitaniumIngots.csproj", "{EA3623CD-AC63-4E30-BB4D-EBF42C83C18A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuantumStorage", "QuantumStorage\QuantumStorage.csproj", "{2E7B69AE-657E-4269-B0E6-95F1EB40D1FF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{EA3623CD-AC63-4E30-BB4D-EBF42C83C18A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EA3623CD-AC63-4E30-BB4D-EBF42C83C18A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EA3623CD-AC63-4E30-BB4D-EBF42C83C18A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2E7B69AE-657E-4269-B0E6-95F1EB40D1FF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2E7B69AE-657E-4269-B0E6-95F1EB40D1FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2E7B69AE-657E-4269-B0E6-95F1EB40D1FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2E7B69AE-657E-4269-B0E6-95F1EB40D1FF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
