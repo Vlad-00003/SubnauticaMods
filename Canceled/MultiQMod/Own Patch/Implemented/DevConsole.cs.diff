@@ -1,6 +1,0 @@
-public static bool HasUsedConsole()
-<     if (!(bool) ((UnityEngine.Object) DevConsole.instance))
-<       return false;
-<     return DevConsole.instance.hasUsedConsole;
----
->     return false;

@@ -1,6 +1,0 @@
-public void OnUse(HandTargetEventData eventData) 39a40
-<	CraftData.AddToInventory(((IList<TechType>) this.snacks).GetRandom<TechType>(), 1, false, false);
-<	
----
->	CraftData.AddToInventory(((IList<TechType>) this.snacks).GetRandom<TechType>(), 1, false, false);
->	CraftData.AddToInventory(TechType.Coffee, 1, false, false);

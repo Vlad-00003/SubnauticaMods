@@ -1,4 +1,0 @@
-public void OnHit(), 156
-<       ancestor.TakeDamage(50f, position, DamageType.Normal, (GameObject) null);
----
->       ancestor.TakeDamage(100f, position, DamageType.Normal, (GameObject) null);

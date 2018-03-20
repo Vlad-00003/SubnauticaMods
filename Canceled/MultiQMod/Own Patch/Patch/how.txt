@@ -1,4 +1,0 @@
-GameInput - add to the end of enum GameInput.Buttons values Slot6,Slot7,Slot8.
-Update SetupDefaultKeyboardBindings() 
-
-Then the rest
