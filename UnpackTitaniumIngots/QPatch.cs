@@ -48,7 +48,7 @@ namespace UnpackTitaniumIngots
             CraftDataPatcher.customTechData.Add(TechType.ScrapMetal, techData);
             CraftTreePatcher.customCraftNodes.Add("Resources/BasicMaterials/ScrapMetal", TechType.ScrapMetal);
             CraftDataPatcher.customItemSizes[TechType.ScrapMetal] = new Vector2int(_x,_y);
-            TechTypePatcher.UnlockOnStart.Add(TechType.ScrapMetal);
+            KnownTechPatcher.unlockedAtStart.Add(TechType.ScrapMetal);
         }
     }
 }

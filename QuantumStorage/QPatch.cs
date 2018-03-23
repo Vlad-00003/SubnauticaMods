@@ -72,9 +72,7 @@ namespace QuantumStorage
             CraftDataPatcher.customBuildables.Add(techType);
             Logger.Debug("techType added to custom Buildables!");
 
-            var groups = typeof(CraftData).GetField("groups", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static)
-                .GetValue(null) as Dictionary<TechGroup, Dictionary<TechCategory, List<TechType>>>;
-            groups[TechGroup.InteriorModules][TechCategory.InteriorModule].Add(techType);
+            CraftDataPatcher.AddToCustomGroup(TechGroup.InteriorModules, TechCategory.InteriorModule,techType);
             Logger.Debug("techType added to the groups!");
         }
     }
