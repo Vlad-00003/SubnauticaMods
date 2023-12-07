@@ -1,17 +1,19 @@
-﻿using Harmony;
+﻿using BepInEx;
+using HarmonyLib;
 using System;
 using System.Reflection;
 
 namespace DrillableScan
 {
-    public class QPatch
+    [BepInPlugin(PluginInfo.PLUGIN_GUID, PluginInfo.PLUGIN_NAME, PluginInfo.PLUGIN_VERSION)]
+    public class MyPlugin : BaseUnityPlugin
     {
-        public static void Patch()
+        public void Awake()
         {
             try
             {
-                HarmonyInstance harmony = HarmonyInstance.Create("com.drillablescan.mod");
-                harmony.PatchAll(Assembly.GetExecutingAssembly());
+                var harmony = new Harmony(PluginInfo.PLUGIN_GUID);
+                harmony.PatchAll();
             }
             catch (Exception e)
             {
